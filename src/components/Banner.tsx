@@ -23,10 +23,10 @@ const Banner = () => {
                     বাজারভিত্তিক বিস্তারিত, গড়, সর্বনিম্ন-সর্বোচ্চ এবং
                     দামের পরিবর্তন এক জায়গায়।
                 </p>
-
-                <button className="btn w-40 mt-5 border-none bg-[#16A34A] text-lg font-semibold text-white hover:bg-[#15803D]">
+ <button className="btn w-40 mt-5 border-none bg-[#16A34A] text-lg font-semibold text-white hover:bg-[#15803D]">
                     সব পণ্য দেখুন
                 </button>
+               
             </div>
 
             <div className="flex w-full justify-center md:w-2/5 md:justify-end">

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
-
+@import "@heroui/styles"; 
 
 body {
   background-color: #F0F5F0;
