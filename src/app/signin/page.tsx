@@ -37,6 +37,17 @@ const SignInPage = () => {
 
   }
 
+  const handleGoogleSignIn = async()=>{
+  const data = await authClient.signIn.social({
+    provider: "google",
+  });
+  }
+  const handleGithubSignIn = async()=>{
+  const data = await authClient.signIn.social({
+    provider: "github",
+  });
+  }
+
   return (
     <div className='min-h-200 mt-20'>
 
@@ -130,10 +141,11 @@ const SignInPage = () => {
 
         <div className="grid grid-cols-1 gap-8 mx-auto md:grid-cols-2">
           <Button
-            type="button"
+           
             variant="secondary"
             //   onClick={handleGoogleSignIn}
             className="flex h-10 min-w-0 items-center justify-center gap-1 rounded-lg border border-[#DCE5DC] bg-transparent px-2 text-xs text-gray-900"
+          onClick={handleGoogleSignIn}
           >
             <span className=''> <FcGoogle className='h-7 w-7' /> </span>
 
@@ -145,6 +157,7 @@ const SignInPage = () => {
             variant="secondary"
             //   onClick={handleGithubSignIn}
             className="flex h-10 min-w-0 items-center justify-center gap-1 rounded-lg border border-[#DCE5DC] bg-transparent px-2 text-xs text-gray-900"
+          onClick={handleGithubSignIn}
           >
             <span><FaGithub className='h-7 w-7' /></span>
             <span className="text-sm">GitHub দিয়ে সাইন আপ</span>
