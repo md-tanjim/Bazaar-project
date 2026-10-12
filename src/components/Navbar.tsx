@@ -5,6 +5,7 @@ import Link from 'next/link';
 import React from 'react';
 import Date from "@/components/Date";
 import DateShow from '@/components/Date';
+import ProfileOrButton from './ProfileOrButton';
 
 
 
@@ -56,27 +57,8 @@ const Navbar = async() => {
         </div>
       </div>
 
-      {/* Right Side: User Name */}
-      <div className="flex items-center gap-2 text-sm text-gray-800">
-        {/* <span>{session.user?.name}</span> */}
-        {/* <h1 className="max-w-[100px] text-lg sm:text-xl">
-          NAME
-        </h1>
-        <span className="text-xs text-gray-500">▼</span> */}
-
-          <Link href={'/signin'}> <button className="btn w-25 mt-5 border-none bg-[#F0F5F0] text-sm font-semibold text-black hover:bg-[#16A34A]">
-                    সাইন ইন
-                </button></Link>
-
-           <Link href={'/signup'}>
-           <button className="btn w-25 mt-5 border-none bg-[#16A34A] text-sm font-semibold text-white hover:bg-[#15803D]">
-                    সাইন আপ
-                </button>
-           </Link>
-
-
-
-      </div>
+      
+      <ProfileOrButton></ProfileOrButton>
     </nav>
 
     {/* Category Navigation */}
