@@ -9,7 +9,16 @@ import { toast } from 'react-toastify';
 
 const ProfileOrButton = () => {
 
-     const {data: session} = useSession();
+     const {data: session, isPending} = useSession();
+
+
+     if (isPending) {
+        return (
+    <div className="flex h-10 w-28 items-center justify-center">
+      <span className="loading loading-spinner loading-sm text-green-600"></span>
+    </div>
+  );
+     }
       
      
     
@@ -20,7 +29,7 @@ const ProfileOrButton = () => {
             <div className="dropdown dropdown-start">
   <div tabIndex={0} role="button" className="btn m-1">{session?.user?.name} ▼</div>
   <ul tabIndex={-1} className="dropdown-content menu bg-base-100 rounded-box z-1 w-32 p-2 shadow-sm">
-    <li><Link href={'/'}>প্রোফাইল</Link></li>
+    <li><Link href={'/profile'}>প্রোফাইল</Link></li>
     <li><button onClick={async()=> {
         signOut();
         toast.success("সফলভাবে সাইন আউট হয়েছে! আপনাকে স্বাগতম।");

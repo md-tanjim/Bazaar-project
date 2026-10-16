@@ -130,7 +130,7 @@ const SignInPage = () => {
           type="submit"
           className="mt-1 h-10 w-full rounded-lg border-none bg-[#16A34A] font-semibold text-white hover:bg-[#15803D]"
         >
-          অ্যাকাউন্ট তৈরি করুন
+          সাইন ইন
         </Button>
 
         <div className="flex items-center gap-3">

@@ -1,12 +1,28 @@
 
-import { Iitem, translations } from './marquee';
+import { Iitem, translations } from "./marquee";
 
+const Cards = ({ items }: { items: Iitem }) => {
+  const direction = items.change.dir;
 
-const Allitems = ({items} : {items : Iitem}) => {
-    return (
-        <div>
-            
-             <div className="min-w-0 rounded-3xl border border-[#DCE5DC] bg-[#FAFCFA] p-4 sm:p-5">
+  const isUp = direction === "up";
+  const isDown = direction === "down";
+
+  const arrow = isUp ? "▲" : isDown ? "▼" : "—";
+
+  const textColor = isUp
+    ? "text-red-600"
+    : isDown
+      ? "text-green-600"
+      : "text-gray-500";
+
+  const badgeColor = isUp
+    ? "bg-red-50"
+    : isDown
+      ? "bg-[#F0F5F0]"
+      : "bg-gray-100";
+
+  return (
+    <div className="min-w-0 rounded-3xl border border-[#DCE5DC] bg-[#FAFCFA] p-4 sm:p-5">
       {/* Product name and image */}
       <div className="flex min-w-0 items-center gap-3">
         <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-[#F0F5F0] text-2xl">
@@ -24,7 +40,7 @@ const Allitems = ({items} : {items : Iitem}) => {
         </div>
       </div>
 
-      {/* Price and price change */}
+      {/* Today's price and price change */}
       <div className="mt-3 flex min-w-0 items-end justify-between gap-2">
         <div className="min-w-0">
           <p className="text-sm text-gray-700">আজকের দাম</p>
@@ -35,18 +51,14 @@ const Allitems = ({items} : {items : Iitem}) => {
         </div>
 
         <span
-            className={`flex items-center gap-1 whitespace-nowrap font-bold ${items.change.dir == "up" ? "text-red-600" :
-                    items.change.dir == "down" ? "text-green-600" :
-                        "text-gray-500"
-                }`}
-                >
-                    <span>{items.change.dir == "up" ? "▲" : items.change.dir == "down" ? "▼" : "—"}</span>
-                    <span>{Math.abs(items.change.pct).toLocaleString("bn-BD")}%</span>
-                </span>
+          className={`badge h-auto shrink-0 gap-1 rounded-full border-none px-3 py-2 text-[15px] font-bold ${badgeColor} ${textColor}`}
+        >
+          {arrow}
+          {Math.abs(items.change.pct).toLocaleString("bn-BD")}%
+        </span>
       </div>
     </div>
-        </div>
-    );
+  );
 };
 
-export default Allitems;
+export default Cards;

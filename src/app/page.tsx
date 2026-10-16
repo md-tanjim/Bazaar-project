@@ -1,12 +1,13 @@
-import Allitems from "@/components/Allitems";
+
 import Banner from "@/components/Banner";
-import Footer from "@/components/Footer";
-import Marquee, { Iitem } from "@/components/marquee";
-import PriceDown from "@/components/PriceDown";
-import PriceUp from "@/components/PriceUp";
+import Cards from "@/components/Cards";
+import { Iitem } from "@/components/marquee";
+
+
+
 import Link from "next/link";
 
-import { ToastContainer } from "react-toastify";
+
 
 export default async function Home() {
 
@@ -38,7 +39,7 @@ export default async function Home() {
       TopRiser.map((items : Iitem)=> {
         return(
           
-          (items.change.dir === "up")? <Link key={items.id} href={'/'}><PriceUp  items={items}></PriceUp></Link> : ""
+          (items.change.dir === "up")? <Link key={items.id} href={'/'}><Cards  items={items}></Cards></Link> : ""
         )
       })
     }
@@ -50,7 +51,7 @@ export default async function Home() {
       {
       TopLower.map((items : Iitem)=> {
         return(
-          (items.change.dir === "down")? <PriceDown key={items.id} items={items}></PriceDown> : ""
+          (items.change.dir === "down")? <Link key={items.id} href={'/'}><Cards  items={items}></Cards></Link> : ""
         )
       })
     }
@@ -61,7 +62,7 @@ export default async function Home() {
     <div className="grid grid-cols-1 gap-9 sm:grid-cols-2 lg:grid-cols-3">
       {
       data.map((items : Iitem)=> { 
-      return <Allitems key={items.id} items={items}></Allitems>  })
+      return <Link key={items.id} href={'/'}><Cards  items={items}></Cards></Link>  })
     }
     </div>
 
