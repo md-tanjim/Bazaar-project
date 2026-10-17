@@ -15,9 +15,9 @@ const SignInPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { refetch } = useSession()
   const router = useRouter();
-  const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    const formData = new FormData(e.currentTarget);
     const user = Object.fromEntries(formData.entries()) as { email: string, password: string }
 
     const { data, error } = await authClient.signIn.email({

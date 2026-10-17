@@ -1,8 +1,24 @@
-import { translations } from '@/components/marquee';
+import { Iitem, translations } from '@/components/marquee';
 import Link from 'next/link';
 import React from 'react';
 
-const ProductDetailsPage = async ({params}) => {
+
+
+
+
+interface Imarket {
+    market: string,
+      division: string,
+      min: number,
+      max: number
+}
+
+
+
+
+
+
+const ProductDetailsPage = async ({params} : {params : Promise<{id : number}>}) => {
 
     const {id} = await params;
     const res = await fetch(`https://openapi.programming-hero.com/api/bazardor/products/${id}`);
@@ -12,8 +28,8 @@ const ProductDetailsPage = async ({params}) => {
     
     
     
-    const lowestPrice = Math.min(...item.markets.map((market) => market.min));
-    const highestPrice = Math.max(...item.markets.map((market) => market.max));
+    const lowestPrice = Math.min(...item.markets.map((market : Imarket) => market.min));
+    const highestPrice = Math.max(...item.markets.map((market : Imarket) => market.max));
     const avrg = (highestPrice + lowestPrice)/2;
     console.log(highestPrice, "highestPrice from product page")
 
@@ -183,7 +199,7 @@ const ProductDetailsPage = async ({params}) => {
       </thead>
 
       <tbody>
-        {item.markets.map((market, index) => {
+        {item.markets.map((market : Imarket , index : number) => {
           const avg = (market.min + market.max) / 2;
 
           return (

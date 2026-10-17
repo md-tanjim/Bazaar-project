@@ -12,7 +12,7 @@ interface itemsProps {
     CatagoryDetailsPage : string,
     categoryIcon : string,
     categoryNameBn : string,
-    today : string,
+    today : number,
 
     image: string,
     nameBn : string,

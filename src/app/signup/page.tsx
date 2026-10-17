@@ -2,7 +2,7 @@
 import { authClient, useSession } from '@/lib/auth-client';
 import { Button, Description, FieldError, Form, Input, Label, TextField } from '@heroui/react';
 import Link from 'next/link';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
@@ -17,11 +17,11 @@ const SignUpPage = () => {
   const router = useRouter();
   const { refetch } = useSession()
 
-  const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
 
-    const formData = new FormData(e.target);
+    const formData = new FormData(e.currentTarget);
     const user = Object.fromEntries(formData.entries()) as { name: string, email: string, password: string };
 
     const { data, error } = await authClient.signUp.email({

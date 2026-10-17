@@ -17,8 +17,8 @@ export default async function Home() {
   console.log(data, "for cards from app")
 
 
-  const TopRiser = data.filter((items : Iitem) => items.change.dir === "up").sort((a, b) => b.today - a.today).slice(0, 6);
-  const TopLower = data.filter((items : Iitem) => items.change.dir === "down").sort((a, b) => a.today - b.today).slice(0, 6)
+  const TopRiser = data.filter((items : Iitem) => items.change.dir === "up").sort((a : Iitem, b: Iitem) => b.today - a.today).slice(0, 6);
+  const TopLower = data.filter((items : Iitem) => items.change.dir === "down").sort((a:Iitem, b:Iitem) => a.today - b.today).slice(0, 6)
 
 
 
@@ -57,12 +57,12 @@ export default async function Home() {
     }
     </div>
 
-    <p className="text-2xl font-bold px-5 mt-12"><span className="text-red-600">▲</span>সব পণ্য</p>
+    <p id="all-section" className="text-2xl font-bold px-5 mt-12">সব পণ্য</p>
     <p className="text-xl mt-2 mb-5 px-5">মোট {Number(data.length).toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে</p>
-    <div className="grid grid-cols-1 gap-9 sm:grid-cols-2 lg:grid-cols-3">
+    <div   className="grid grid-cols-1 gap-9 sm:grid-cols-2 lg:grid-cols-3">
       {
       data.map((items : Iitem)=> { 
-      return <Link key={items.id} href={'/'}><Cards  items={items}></Cards></Link>  })
+      return <Cards key={items.id} items={items}></Cards> })
     }
     </div>
 

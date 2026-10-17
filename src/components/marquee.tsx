@@ -17,9 +17,10 @@ export interface Iitem{
     id : number,
     image: string,
     nameBn : string,
-    today: string,
+    today: number,
     unit: string,
     change : Ichange,
+    
     
 }
 // export interface Ichange {
