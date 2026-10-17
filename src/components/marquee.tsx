@@ -22,13 +22,35 @@ export interface Iitem{
     change : Ichange,
     
 }
+// export interface Ichange {
+//   dir: "up" | "down" | "flat";
+//   pct: number;
+// }
 
+// export interface Iitem {
+//   id: number;
+//   image: string;
+//   nameBn: string;
+//   today: string;
+//   unit: string;
+//   change: Ichange;
+// }
+
+// export interface ICategoryItem {
+//   id: number;
+//   CatagoryDetailsPage: string;
+//   categoryIcon: string;
+//   categoryNameBn: string;
+//   today: string;
+// }
+
+// export type CardItem = Iitem | ICategoryItem;
 
 const Marquee = async () => {
 
     const res = await fetch('https://openapi.programming-hero.com/api/bazardor/products', {cache: "force-cache"});
     const data = await res.json();
-    console.log(data, "marquee data");
+    // console.log(data, "marquee data");
 
     return (
         <div>

@@ -34,7 +34,7 @@ const Navbar = async() => {
   <div className="container mx-auto max-w-7xl px-3 sm:px-4 md:px-8">
 
     <nav className="flex items-center justify-between gap-3 py-2">
-      {/* Left Side: Logo and Date */}
+      
       <div className="flex min-w-0 items-center gap-2">
         <Link href="/" className="hidden md:block">
           <Image
@@ -51,7 +51,7 @@ const Navbar = async() => {
             বাজার দর
           </h1>
           <p className="text-xl text-gray-600">
-            {/* {date} */}
+           
           </p>
             <DateShow></DateShow>
         </div>
@@ -61,10 +61,11 @@ const Navbar = async() => {
       <ProfileOrButton></ProfileOrButton>
     </nav>
 
-    {/* Category Navigation */}
+   
     <div className="flex items-center gap-4 overflow-x-auto border-t border-gray-100 py-3 sm:gap-6">
       {data.map((catagory: Icatagory) => {
         return (
+          <Link  href={`/catagory/${catagory.id}`} key={catagory.id}>
           <div
             key={catagory.id}
             className="flex shrink-0 cursor-pointer items-center gap-1.5 text-black transition-colors hover:text-green-700"
@@ -72,6 +73,7 @@ const Navbar = async() => {
              <span className="text-3xl   sm:text-xl">{catagory.icon}</span>
   <span className="text-2xl sm:text-xl">{catagory.nameBn}</span>
           </div>
+          </Link>
         );
       })}
     </div>

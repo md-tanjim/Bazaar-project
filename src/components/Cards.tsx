@@ -1,7 +1,13 @@
 
+import Link from "next/link";
 import { Iitem, translations } from "./marquee";
 
+
+
 const Cards = ({ items }: { items: Iitem }) => {
+
+
+
   const direction = items.change.dir;
 
   const isUp = direction === "up";
@@ -21,17 +27,30 @@ const Cards = ({ items }: { items: Iitem }) => {
       ? "bg-[#F0F5F0]"
       : "bg-gray-100";
 
+
+
+
+    console.log(items.id, "itemts from Cards")
+
+
+
   return (
+
+    <Link href={`/product/${items.id}`}>
+    {/* // <Link href={"/"}> */}
+   
     <div className="min-w-0 rounded-3xl border border-[#DCE5DC] bg-[#FAFCFA] p-4 sm:p-5">
       {/* Product name and image */}
       <div className="flex min-w-0 items-center gap-3">
         <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-[#F0F5F0] text-2xl">
           {items.image}
+          
         </div>
 
         <div className="min-w-0">
           <h3 className="truncate text-lg leading-tight font-bold text-black">
             {items.nameBn}
+            
           </h3>
 
           <p className="mt-1 text-sm text-gray-700">
@@ -58,6 +77,8 @@ const Cards = ({ items }: { items: Iitem }) => {
         </span>
       </div>
     </div>
+
+ </Link>
   );
 };
 
