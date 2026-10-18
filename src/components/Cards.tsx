@@ -30,7 +30,7 @@ const Cards = ({ items }: { items: Iitem }) => {
 
 
 
-    console.log(items.id, "itemts from Cards")
+    // console.log(items.id, "itemts from Cards")
 
 
 

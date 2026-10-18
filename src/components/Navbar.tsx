@@ -2,20 +2,12 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
-import Date from "@/components/Date";
 import DateShow from '@/components/Date';
 import ProfileOrButton from './ProfileOrButton';
+import CatagoryItems from './CatagoryItems';
 
 
 
-interface Icatagory {
-    
-    id: string,
-    slug: string,
-    nameBn: string,
-    icon: string,
-}
 
 
 const Navbar = async() => {
@@ -25,7 +17,7 @@ const Navbar = async() => {
     const res = await fetch('https://openapi.programming-hero.com/api/bazardor/categories', { cache: "force-cache"});
     const data = await res.json();
 
-    console.log(data);
+    console.log(data, "data from nav page");
 
 
     return (
@@ -62,21 +54,9 @@ const Navbar = async() => {
     </nav>
 
    
-    <div className="flex items-center gap-4 overflow-x-auto border-t border-gray-100 py-3 sm:gap-6">
-      {data.map((catagory: Icatagory) => {
-        return (
-          <Link  href={`/catagory/${catagory.id}`} key={catagory.id}>
-          <div
-            key={catagory.id}
-            className="flex shrink-0 cursor-pointer items-center gap-1.5 text-black transition-colors hover:text-green-700"
-          >
-             <span className="text-3xl   sm:text-xl">{catagory.icon}</span>
-  <span className="text-2xl sm:text-xl">{catagory.nameBn}</span>
-          </div>
-          </Link>
-        );
-      })}
-    </div>
+     <CatagoryItems data={data}></CatagoryItems>
+    
+    
 
   </div>
 </div>

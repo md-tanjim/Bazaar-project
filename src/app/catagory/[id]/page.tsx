@@ -21,7 +21,7 @@ const CatagoryDetailsFetch = async ({params} : {params : Promise<{id : string}>}
     if (!items) {
       notFound();
     }
-    console.log(items, "item from cat id")
+    // console.log(items, "item from cat id")
 
     
 
