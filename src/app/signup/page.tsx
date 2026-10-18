@@ -1,8 +1,9 @@
 'use client';
 import { authClient, useSession } from '@/lib/auth-client';
 import { Button, Description, FieldError, Form, Input, Label, TextField } from '@heroui/react';
+import { error } from 'console';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
@@ -43,9 +44,34 @@ const SignUpPage = () => {
 
     // console.log(user, "form data in signin")
 
-
-
   }
+
+   const handleGoogleSignIn = async()=>{
+    sessionStorage.setItem("showGoogleToast", "1");
+
+    const {error} = await authClient.signIn.social({
+      provider: "google",
+    });
+
+    if (error) {
+      sessionStorage.removeItem("showGoogleToast");
+      toast.error("কিছু ত্রুটি হয়েছে।");
+    }
+    // console.log(data, "data from signup handleGoogleSignIn")
+   
+    }
+
+    const handleGithubSignIn = async()=>{
+      sessionStorage.setItem("showGoogleToast", "1");
+    const {error} = await authClient.signIn.social({
+      provider: "github",
+    });
+
+    if (error) {
+      sessionStorage.removeItem("showGoogleToast");
+      toast.error("কিছু ত্রুটি হয়েছে।");
+    }
+    }
 
 
 
@@ -204,7 +230,7 @@ const SignUpPage = () => {
           <Button
             type="button"
             variant="secondary"
-            //   onClick={handleGoogleSignIn}
+              onClick={handleGoogleSignIn}
             className="flex h-10 min-w-0 items-center justify-center gap-1 rounded-lg border border-[#DCE5DC] bg-transparent px-2 text-xs text-gray-900"
           >
             <span className=''> <FcGoogle className='h-7 w-7' /> </span>
@@ -215,7 +241,7 @@ const SignUpPage = () => {
           <Button
             type="button"
             variant="secondary"
-            //   onClick={handleGithubSignIn}
+              onClick={handleGithubSignIn}
             className="flex h-10 min-w-0 items-center justify-center gap-1 rounded-lg border border-[#DCE5DC] bg-transparent px-2 text-xs text-gray-900"
           >
             <span><FaGithub className='h-7 w-7' /></span>

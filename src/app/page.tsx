@@ -1,6 +1,8 @@
 
+
 import Banner from "@/components/Banner";
 import Cards from "@/components/Cards";
+import GoogleGithubToast from "@/components/GoogleGithubToast";
 import { Iitem } from "@/components/marquee";
 
 
@@ -25,7 +27,9 @@ export default async function Home() {
 
   return (
    <div className="mx-auto max-w-7xl">
-   
+
+   <GoogleGithubToast></GoogleGithubToast>
+
    <Banner></Banner>
 
 

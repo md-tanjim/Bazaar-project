@@ -37,16 +37,35 @@ const SignInPage = () => {
 
   }
 
-  const handleGoogleSignIn = async()=>{
-  const data = await authClient.signIn.social({
-    provider: "google",
-  });
-  }
-  const handleGithubSignIn = async()=>{
-  const data = await authClient.signIn.social({
-    provider: "github",
-  });
-  }
+  
+  
+   const handleGoogleSignIn = async()=>{
+    sessionStorage.setItem("showGoogleToast", "1");
+
+    const {error} = await authClient.signIn.social({
+      provider: "google",
+    });
+
+    if (error) {
+      sessionStorage.removeItem("showGoogleToast");
+      toast.error("কিছু ত্রুটি হয়েছে।");
+    }
+    // console.log(data, "data from signup handleGoogleSignIn")
+   
+    }
+
+    const handleGithubSignIn = async()=>{
+      sessionStorage.setItem("showGoogleToast", "1");
+    const {error} = await authClient.signIn.social({
+      provider: "github",
+    });
+
+    if (error) {
+      sessionStorage.removeItem("showGoogleToast");
+      toast.error("কিছু ত্রুটি হয়েছে।");
+    }
+    }
+
 
   return (
     <div className='min-h-200 mt-20'>
