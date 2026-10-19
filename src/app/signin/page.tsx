@@ -168,7 +168,7 @@ const SignInPage = () => {
           >
             <span className=''> <FcGoogle className='h-7 w-7' /> </span>
 
-            <span className="text-sm">Google দিয়ে সাইন আপ</span>
+            <span className="text-sm">Google দিয়ে সাইন ইন</span>
           </Button>
 
           <Button
@@ -179,15 +179,15 @@ const SignInPage = () => {
           onClick={handleGithubSignIn}
           >
             <span><FaGithub className='h-7 w-7' /></span>
-            <span className="text-sm">GitHub দিয়ে সাইন আপ</span>
+            <span className="text-sm">GitHub দিয়ে সাইন ইন</span>
           </Button>
         </div>
 
         <p className="text-center text-sm text-gray-600">
-          অ্যাকাউন্ট আছে?{" "}
-          <Link href={'/signin'}
+          অ্যাকাউন্ট নেই?{" "}
+          <Link href={'/signup'}
             className="font-medium text-[#16A34A] hover:underline">
-            সাইন ইন করুন
+            সাইন আপ করুন
           </Link>
         </p>
       </Form>
