@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 
 import CatagoryDetailsPage from '../page';
 
+
 const CatagoryDetailsFetch = async ({params} : {params : Promise<{id : string}>}) => {
     
 
@@ -18,10 +19,11 @@ const CatagoryDetailsFetch = async ({params} : {params : Promise<{id : string}>}
     }
     const items = await res.json();
 
-    if (!items) {
+    if (!items || items.length === 0) {
       notFound();
     }
-    // console.log(items, "item from cat id")
+
+    console.log(items, "===============item from cat id==================")
 
     
 
@@ -31,8 +33,10 @@ const CatagoryDetailsFetch = async ({params} : {params : Promise<{id : string}>}
     
     return (
         
+       
+         <CatagoryDetailsPage items={items}></CatagoryDetailsPage>
 
-    <CatagoryDetailsPage items={items}></CatagoryDetailsPage>
+      
        
     );
 };

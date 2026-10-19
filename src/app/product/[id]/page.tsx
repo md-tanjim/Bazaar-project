@@ -1,5 +1,6 @@
 import { Iitem, translations } from '@/components/marquee';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import React from 'react';
 
 
@@ -22,7 +23,16 @@ const ProductDetailsPage = async ({params} : {params : Promise<{id : number}>}) 
 
     const {id} = await params;
     const res = await fetch(`https://openapi.programming-hero.com/api/bazardor/products/${id}`);
-    const item = await res.json();
+    // const item = await res.json();
+
+     if (!res.ok) {
+          notFound();
+        }
+        const item = await res.json();
+    
+        if (!item) {
+          notFound();
+        }
 
     console.log(item, "item from product page")
     
@@ -170,7 +180,7 @@ const ProductDetailsPage = async ({params} : {params : Promise<{id : number}>}) 
 
 
 
-{/* বাজারভিত্তিক আজকের দাম */}
+  {/* bazar vittik dam */}
 <div className="mt-5">
   <h2 className="mb-3 text-base font-bold text-[#263329]">
     বাজারভিত্তিক আজকের দাম
@@ -204,7 +214,7 @@ const ProductDetailsPage = async ({params} : {params : Promise<{id : number}>}) 
 
           return (
             <tr
-            //   key={`${market.market}-${market.division}`}
+           
               key={index}
               className={`border-t border-[#DCE5DC] ${
                 index % 2 === 0
@@ -212,27 +222,27 @@ const ProductDetailsPage = async ({params} : {params : Promise<{id : number}>}) 
                   : "bg-[#F0F5F0]"
               }`}
             >
-              {/* Market name */}
+              
               <td className="whitespace-nowrap px-3 py-3 font-medium text-[#263329] sm:px-4">
                 {market.market}
               </td>
 
-              {/* Division */}
+             
               <td className="whitespace-nowrap px-3 py-3 text-[#263329] sm:px-4">
                 {market.division}
               </td>
 
-              {/* Minimum price */}
+              
               <td className="whitespace-nowrap px-3 py-3 text-right text-[#263329] sm:px-4">
                 {market.min.toLocaleString("bn-BD")} টাকা
               </td>
 
-              {/* Maximum price */}
+             
               <td className="whitespace-nowrap px-3 py-3 text-right text-[#263329] sm:px-4">
                 {market.max.toLocaleString("bn-BD")} টাকা
               </td>
 
-              {/* Average price */}
+             
               <td className="whitespace-nowrap px-3 py-3 text-right font-bold text-[#263329] sm:px-4">
                 {avg.toLocaleString("bn-BD", { maximumFractionDigits: 2,})}{" "} টাকা
               </td>

@@ -8,7 +8,7 @@ const Banner = () => {
     return (
     <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
         <div className="flex flex-col items-center justify-between gap-6 rounded-3xl border border-gray-100 bg-white p-6 sm:p-8 md:flex-row md:gap-10 md:p-12">
-            {/* Left side: Text content */}
+           
             <div className="w-full md:w-3/5">
                 <span className="inline-block rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-700">
                     <DateShow></DateShow>

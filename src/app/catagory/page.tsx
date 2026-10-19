@@ -34,7 +34,7 @@ const CatagoryDetailsPage = ({items} : props) => {
 
     const [sortBy, setSortBy] = useState<"default" | "price-low" | "price-high">("default");
 
-     const sortedItems = [...items].sort((a, b) => {
+     const sortedItems = [...(Array.isArray(items) ? items : [])].sort((a, b) => {
         
     if (sortBy === "price-low") {
       return Number(a.today) - Number(b.today);
@@ -57,7 +57,7 @@ const CatagoryDetailsPage = ({items} : props) => {
     return (
         <div className="mx-auto w-full max-w-6xl px-4 py-5 sm:px-6 my-20">
 
-  {/* Category header */}
+ 
   <div className="rounded-2xl border border-[#DCE5DC] bg-[#FAFCFA] p-5">
     <div className="flex items-center gap-3">
       <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-[#F0F5F0] text-2xl">
@@ -76,7 +76,7 @@ const CatagoryDetailsPage = ({items} : props) => {
     </div>
   </div>
 
-  {/* Results count and sorting */}
+
   <div className="flex items-center justify-between gap-3 py-5">
     <p className="text-sm text-gray-600">
       মোট {items.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে
@@ -104,7 +104,7 @@ const CatagoryDetailsPage = ({items} : props) => {
     </div>
   </div>
 
-  {/* Product cards */}
+ 
   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {sortedItems.map((item: itemsProps) => (
       <Cards key={item.id} items={item} />

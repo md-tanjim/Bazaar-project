@@ -37,10 +37,10 @@ const Cards = ({ items }: { items: Iitem }) => {
   return (
 
     <Link href={`/product/${items.id}`}>
-    {/* // <Link href={"/"}> */}
+    
    
     <div className="min-w-0 rounded-3xl border border-[#DCE5DC] bg-[#FAFCFA] p-4 sm:p-5">
-      {/* Product name and image */}
+      
       <div className="flex min-w-0 items-center gap-3">
         <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-[#F0F5F0] text-2xl">
           {items.image}
@@ -59,7 +59,7 @@ const Cards = ({ items }: { items: Iitem }) => {
         </div>
       </div>
 
-      {/* Today's price and price change */}
+    
       <div className="mt-3 flex min-w-0 items-end justify-between gap-2">
         <div className="min-w-0">
           <p className="text-sm text-gray-700">আজকের দাম</p>

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import DateShow from '@/components/Date';
 import ProfileOrButton from './ProfileOrButton';
 import CatagoryItems from './CatagoryItems';
+import { Suspense } from 'react';
 
 
 
@@ -54,7 +55,13 @@ const Navbar = async() => {
     </nav>
 
    
+   
+    <Suspense fallback={null}>
      <CatagoryItems data={data}></CatagoryItems>
+
+    </Suspense>
+    
+    
     
     
 

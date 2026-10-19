@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Marquee from "@/components/marquee";
 import Footer from "@/components/Footer";
 import { ToastContainer } from "react-toastify";
+import { Suspense } from "react";
 
 const notoSerifBengali = Noto_Serif_Bengali({
 
@@ -37,7 +38,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       // className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+
+       
         <Navbar></Navbar>
+         
+       
         <Marquee></Marquee>
         
         {children}
